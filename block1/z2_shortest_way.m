@@ -48,19 +48,20 @@ figure(2)
 hold on
 plot(mapXY(:,1),mapXY(:,2),'r');
 plot(mapXY(:,1),mapXY(:,2),'bo', 'MarkerFaceColor', 'b', 'MarkerSize', 10);
-
-disp('Best route length is: ' + graph(gen));
 for i = 1:20
     text(B(i, 1)+2, B(i, 2)+1, "" + i + "");
 end
+
+disp('Best route length is: ');
+disp(graph(gen));
 
 function [out] = pathLength(xy, size, coords)
     out = zeros(1, size);
     for i=1:size    
         for j=1:height(coords)-1
-            coordX = coords(xy(i, j+1), 1) - coords(xy(i, j), 1);
-            coordY = coords(xy(i, j+1), 2) - coords(xy(i, j), 2);
-            out(i) = out(i) + sqrt(coordX^2 + coordY^2);
+            x = coords(xy(i, j+1), 1) - coords(xy(i, j), 1);
+            y = coords(xy(i, j+1), 2) - coords(xy(i, j), 2);
+            out(i) = out(i) + sqrt(x^2 + y^2);
         end   
     end
 end
