@@ -28,9 +28,9 @@ P = [ones(1,50) zeros(1,50) zeros(1,50) zeros(1,50) zeros(1,50);
 ];
 
 % vytvorenie struktury NS na klasifikaciu
-net = patternnet([5]); % hidden layers
+net = patternnet([5]); % pocet skrytych vrstiev
 
-% vsetky data pouzite na trenovanie
+% rozdelenie dat
 net.divideFcn='dividerand';         % nahodne rozdelenie dat
 net.divideParam.trainRatio = 0.8;     % 80% dat na trenovanie
 net.divideParam.valRatio = 0;         % na validaciu (nepovinne)  
