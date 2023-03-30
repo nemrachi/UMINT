@@ -14,7 +14,7 @@ net.divideParam.testInd = indx_test; % index pre indexove rozdelenie testovacich
 net.trainParam.goal = 1e-4;        % ukoncovacia podmienka na chybu SSE
 net.trainParam.show = 5;          % frekvencia zobrazovania priebehu chyby trénovania
 net.trainParam.epochs = 300;       % max. pocet trenovacich cyklov
-net.trainParam.min_grad = 1e-3;    % ukoncovacia podmienka na min. gradient 
+net.trainParam.min_grad = 1e-4;    % ukoncovacia podmienka na min. gradient 
 % minimalna odchylka pod 1e-4 pri testovacich datach
 
 % trenovanie NS
