@@ -4,7 +4,7 @@ clc, clear, close all;
 load('datafun.mat'); % hodnoty pre NS (indx_train, indx_test) a pre funkciu (x, y)
 
 % trenovacia metoda - Levenberg-Marquardt 
-net = fitnet(24); % pocet skrytych vrstiev
+net = fitnet(23); % pocet skrytych vrstiev
 
 % rozdelenie dat
 net.divideFcn='divideind';         % kazda n-ta vzorka (indexove)

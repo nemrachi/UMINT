@@ -17,7 +17,7 @@ plot3(data5(:,1),data5(:,2),data5(:,3),'mx');
 
 % vstupne data po stlpcoch
 X = [data1; data2; data3; data4; data5];
-X = X'; % array transposition
+X = X'; % transpozicia pola
 
 % vystupne data pre NS
 P = [ones(1,50) zeros(1,50) zeros(1,50) zeros(1,50) zeros(1,50);
