@@ -21,7 +21,7 @@ inputs = NDATA'; % transpozicia pola dat
 cTest = 50; % hodnota confusion pre test data
 
 for i = 1:10
-    net = patternnet(23); % NS pre rozpoznavanie patternov
+    net = patternnet(20); % NS pre rozpoznavanie patternov
 
     % rozdelenie dat
     net.divideFcn = 'dividerand';       % nahodne rozdelenie dat
@@ -51,20 +51,22 @@ for i = 1:10
     [cTrain,cmTrain] = confusion(targetsTrain,outputsTrain);
     [cTest,cmTest] = confusion(targetsTest,outputsTest);
     [cAll,cm] = confusion(targets,outputs);
-    fprintf('\n\n%d. Úspešnosť klasifikácie (train,test,all): \t\t%.4f  %.4f %.4f\n', i,100*(1-cTrain),100*(1-cTest), 100*(1-cAll));
-    fprintf('Senzitivita a špecificita (train): \t%.4f %.4f\n',cmTrain(2,2)/(cmTrain(2,2)+cmTrain(2,1)), cmTrain(1,1)/(cmTrain(1,1)+cmTrain(1,2)));
-    fprintf('Senzitivita a špecificita (test): \t%.4f %.4f\n',cmTest(2,2)/(cmTest(2,2)+cmTest(2,1)), cmTest(1,1)/(cmTest(1,1)+cmTest(1,2)));
-    fprintf('Senzitivita a špecificita (all): \t%.4f %.4f\n',cm(2,2)/(cm(2,2)+cm(2,1)), cm(1,1)/(cm(1,1)+cm(1,2)));
-    
-    uspesnost(i,1) = 100*(1-cTrain);
-    uspesnost(i,2) = 100*(1-cTest);
-    uspesnost(i,3) = 100*(1-cAll);
+
+    fprintf('\n\n%d. Úspešnosť klasifikácie (train,test,all): %.4f  %.4f %.4f\n', i,100*(1-cTrain),100*(1-cTest), 100*(1-cAll));
+    fprintf('Train -> Senzitivita: %.4f | Špecificita: %.4f\n',cmTrain(2,2)/(cmTrain(2,2)+cmTrain(2,1)), cmTrain(1,1)/(cmTrain(1,1)+cmTrain(1,2)));
+    fprintf('Test -> Senzitivita: %.4f | Špecificita: %.4f\n',cmTest(2,2)/(cmTest(2,2)+cmTest(2,1)), cmTest(1,1)/(cmTest(1,1)+cmTest(1,2)));
+    fprintf('All -> Senzitivita: %.4f | Špecificita: %.4f\n',cm(2,2)/(cm(2,2)+cm(2,1)), cm(1,1)/(cm(1,1)+cm(1,2)));
+
+    success(i,1) = 100*(1-cTrain);
+    success(i,2) = 100*(1-cTest);
+    success(i,3) = 100*(1-cAll);
+
 end
 
 fprintf('\n');
-Uspesnost_min = min(uspesnost);
-Uspesnost_max = max(uspesnost);
-Uspesnost_mean = mean(uspesnost);
-fprintf('Úspešnosť train (min,max,average): %.4f %.4f %.4f \n',Uspesnost_min(1), Uspesnost_max(1), Uspesnost_mean(1));
-fprintf('Úspešnosť test (min,max,average): %.4f %.4f %.4f \n',Uspesnost_min(2), Uspesnost_max(2), Uspesnost_mean(2));
-fprintf('Úspešnosť all (min,max,average): \t%.4f %.4f %.4f \n',Uspesnost_min(3), Uspesnost_max(3), Uspesnost_mean(3));
+successMin = min(success);
+successMax = max(success);
+successMean = mean(success);
+fprintf('Úspešnosť train (min,max,average): %.4f %.4f %.4f \n',successMin(1), successMax(1), successMean(1));
+fprintf('Úspešnosť test (min,max,average): %.4f %.4f %.4f \n',successMin(2), successMax(2), successMean(2));
+fprintf('Úspešnosť all (min,max,average): \t%.4f %.4f %.4f \n',successMin(3), successMax(3), successMean(3));
