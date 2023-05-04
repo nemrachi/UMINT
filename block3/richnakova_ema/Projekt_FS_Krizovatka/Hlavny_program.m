@@ -84,13 +84,8 @@ for cyk = 1:20 % hlavny cyklus
        
     %% vypocet intervalu zelenej z fuzzy systemu
     % zmena premennej Interval - poèíta výstup fuzzy systému cez funkciu evalfis
-    output = round(evalfis(f,[A1,(A2+A3)])); % zaokruhlovanie vystupu
-    if output > hranica_pa
-        Interval = hranica_pa;
-    else
-        Interval = output;
-    end
-   
+    Interval = round(evalfis(f,[A1,(A2+A3)])); % zaokruhlovanie vystupu
+    
     %% ziskanie poctu cyklov zelenej
     poc_cyklov = round((Interval/doba_prechodu));
     
@@ -124,16 +119,12 @@ for cyk = 1:20 % hlavny cyklus
     % spocitanie aut z pruhov do cyklov
     
     [A1,A2,A3] = Ziskaj_poc_aut(pocet_aut_na_kriz);
+    display("A1:" + A1 + " A2:" + A2 + " A3:" + A3);
     
     %% vypocet intervalu zelenej z fuzzy systemu
     % zmena premennej Interval - poèíta výstup fuzzy systému cez funkciu evalfis
-    output = round(evalfis(f,[A2,(A1+A3)])); % zaokruhlovanie vystupu
-    if output > hranica_pa
-        Interval = hranica_pa;
-    else
-        Interval = output;
-    end
-   
+    Interval = round(evalfis(f,[A2,(A1+A3)])); % zaokruhlovanie vystupu
+    
     %% ziskanie poctu cyklov zelenej
     poc_cyklov = round((Interval/doba_prechodu));
 
@@ -169,13 +160,8 @@ for cyk = 1:20 % hlavny cyklus
        
     %% vypocet intervalu zelenej z fuzzy systemu
     % zmena premennej Interval - poèíta výstup fuzzy systému cez funkciu evalfis
-    output = round(evalfis(f,[A3,(A1+A2)])); % zaokruhlovanie vystupu
-    if output > hranica_pa
-        Interval = hranica_pa;
-    else
-        Interval = output;
-    end
-   
+    Interval = round(evalfis(f,[A3,(A1+A2)])); % zaokruhlovanie vystupu
+    
     %% ziskanie poctu cyklov zelenej
     poc_cyklov = round((Interval/doba_prechodu));
     
